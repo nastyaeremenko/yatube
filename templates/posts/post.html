@@ -1,0 +1,9 @@
+{% extends "posts/profile.html" %}
+{% block title %}Пост пользователя {{ author.get_full_name }}{% endblock %}
+{% block content %}
+
+    {% include "includes/author_card.html" with author=author posts_count=posts_count followers_count=followers_count following_count=following_count following=following %}
+    {% include "includes/post_item.html" with post=post %} 
+    {% include "includes/comments.html" %}
+
+{% endblock %} 

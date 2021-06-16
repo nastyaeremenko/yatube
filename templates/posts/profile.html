@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% load thumbnail %}
+{% block title %}Страница пользователя {{ auther.get_full_name }}{% endblock %}
+
+{% block content %}
+    {% include "includes/author_card.html" with author=author posts_count=posts_count followers_count=followers_count following_count=following_count following=following %}
+
+    <div class="card mb-3 mt-1 shadow-sm">
+        {% for post in page %}
+            {% include "includes/post_item.html" with post=post %} 
+        {% endfor %}
+    </div>
+
+    {% if page.has_other_pages %}
+        {% include "includes/paginator.html" with items=page paginator=paginator%}
+    {% endif %}
+
+{% endblock %} 
